@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% image self.homepage_left_subtitle_image max-400x400 as img %}
+{% image self.homepage_right_subtitle_image max-400x400 as img2 %}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">{{ self.homepage_title_h1 }}</h1>
+    <p class="col-md-8 fs-4">{{ self.homepage_description|richtext }}</p>
+  </div>
+</div>
+
+<div class="row align-items-md-stretch">
+  <div class="col-md-6 py-1">
+    <div class="h-100 p-5 bg-light border rounded-3">
+      <img src="{{ img.url }}" alt="construction">
+      <br>
+      <br>
+      <h2>{{ self.homepage_left_subtitle_h2 }}</h2>
+      <p>{{ self.homepage_left_subtitle_description|richtext }}</p>
+      {% if self.homepage_left_subtitle_link %}
+        <button class="btn btn-outline-light" type="button">{{ self.homepage_left_subtitle_link }}</button>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-6 py-1">
+    <div class="h-100 p-5 bg-light border rounded-3">
+      <img src="{{ img2.url }}" alt="construction">
+      <br>
+      <br>
+      <h2>{{ self.homepage_right_subtitle_h2 }}</h2>
+      <p>{{ self.homepage_right_subtitle_description|richtext }}</p>
+      {% if self.homepage_right_subtitle_link %}
+        <button class="btn btn-outline-light" type="button">{{ self.homepage_right_subtitle_link }}</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% include 'home/footer.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load wagtailimages_tags %}
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for card in self.cards %}
+    <div class="col">
+      <div class="card-group">
+        <div class="card">
+          {% image card.image fill-500x500 as img %}
+          <img src="{{ img.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ card.title }} {{ card.prijmeni }}</h5>
+            <hr>
+            <p class="card-text">{{ card.description}}</p>
+          </div>
+          <div class="card-footer">
+            <br>
+            <p class="small text-muted">Telefon: {{ card.phone }}</p>
+            <p class="small text-muted">Email: {{ card.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
